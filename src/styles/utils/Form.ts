@@ -81,3 +81,19 @@ export const StyledLink = styled.a`
 
     margin-top: 2rem;
 `
+
+export const Error = styled.strong`
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 4rem;
+    display: flex;
+    align-items: center;
+
+    background-color: red;
+    padding: 0 2rem;
+
+    font-size: 1.7rem;
+`
