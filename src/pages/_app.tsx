@@ -1,11 +1,14 @@
 import type { AppProps } from 'next/app'
 import GlobalStyle from "../styles/global"
+import { AuthProvider } from "../contexts/AuthContext"
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <GlobalStyle />
-      <Component {...pageProps} />
+      <AuthProvider>
+        <Component {...pageProps} />
+      </AuthProvider>
     </>
   )
 }
