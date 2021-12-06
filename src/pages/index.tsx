@@ -1,14 +1,49 @@
 import type { NextPage } from 'next'
+import Link from "next/link"
 
 import {
-  Container
-} from "../styles/pages/Home"
+  Container,
+  Form,
+  FormTitle,
+  Label,
+  Input,
+  InputWrapper,
+  CheckBox,
+  CheckBoxLabel,
+  CheckBoxWrapper,
+  Submit,
+  StyledLink,
+} from "../styles/utils/Form"
 
 const Home: NextPage = () => {
-  return (
-    <Container>
-      <h1>Hello World</h1>
-    </Container>
+  return (<Container>
+    <Form>
+      <FormTitle>Dev[0]</FormTitle>
+
+      <InputWrapper>
+        <Label>Username</Label>
+        <Input />
+      </InputWrapper>
+
+      <InputWrapper>
+        <Label>Password</Label>
+        <Input />
+      </InputWrapper>
+
+      <CheckBoxWrapper>
+        <CheckBox type="checkbox" />
+        <CheckBoxLabel>Keep connected</CheckBoxLabel>
+      </CheckBoxWrapper>
+
+      <Submit type="submit">Submit</Submit>
+
+      <Link href="/signup">
+        <StyledLink>
+          SignUp
+        </StyledLink>
+      </Link>
+    </Form>
+  </Container>
   )
 }
 
