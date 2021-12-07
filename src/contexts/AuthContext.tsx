@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from "react"
 import { useRouter } from "next/router"
 import * as adminService from "../services/admin"
-import { AdminI } from "../types/Admin"
+import { AdminI } from "../types/data"
 
 interface AuthContextI {
     isAuthenticated: boolean
