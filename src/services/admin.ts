@@ -1,5 +1,5 @@
 import { setCookie, parseCookies, destroyCookie } from "nookies"
-import { AdminI } from "../types/Admin"
+import { AdminI } from "../types/data"
 import api from "./api"
 
 interface LoginI {
