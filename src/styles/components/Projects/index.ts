@@ -30,10 +30,15 @@ export const Option = styled.span`
     height: 5rem;
 
     border-radius: .5rem;
+    transition: opacity .3s ease;
     cursor: pointer;
 
     svg {
         font-size: 2.5rem;
+    }
+
+    &:hover {
+        opacity: .7;
     }
 
     & + & {

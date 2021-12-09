@@ -5,22 +5,36 @@ import { MessageI, ProjectI, SkillI } from "../../types/data"
 
 import Sidebar from "../../components/Sidebar"
 import Projects from "../../components/Projects"
+import Skills from "../../components/Skills"
+import Messages from "../../components/Messages"
 import {
   Container,
   Content,
 } from "../../styles/pages/Dashboard"
 
 const Dashboard: NextPage = () => {
+  const [option, setOption] = useState<"projects" | "skills" | "messages">("projects")
+
   const [projects, setProjects] = useState<ProjectI[]>()
   const [skills, setSkills] = useState<SkillI[]>()
   const [messages, setMessages] = useState<MessageI[]>()
 
   return (
     <Container>
-      <Sidebar />
+      <Sidebar setOption={setOption} />
 
       <Content>
-        <Projects projects={projects} setProjects={setProjects} />
+        {function () {
+          switch (option) {
+            case "projects":
+              return (<Projects projects={projects} setProjects={setProjects} />)
+            case "skills":
+              return (<Skills />)
+            case "messages":
+              return (<Messages />)
+          }
+        }()}
+
       </Content>
     </Container>
   )

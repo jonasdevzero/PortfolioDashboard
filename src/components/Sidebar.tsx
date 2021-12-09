@@ -7,7 +7,10 @@ import {
     Option,
 } from "../styles/components/Sidebar"
 
-export default function Sidebar() {
+interface SidebarI {
+    setOption: React.Dispatch<React.SetStateAction<"projects" | "skills" | "messages">>
+}
+export default function Sidebar({ setOption }: SidebarI) {
 
     return (
         <Container>
@@ -16,9 +19,9 @@ export default function Sidebar() {
             <Row />
 
             <Options>
-                <Option>Projects</Option>
-                <Option>Skills</Option>
-                <Option>Messages</Option>
+                <Option onClick={() => setOption("projects")}>Projects</Option>
+                <Option onClick={() => setOption("skills")}>Skills</Option>
+                <Option onClick={() => setOption("messages")}>Messages</Option>
             </Options>
         </Container>
     )
