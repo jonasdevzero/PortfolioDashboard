@@ -13,7 +13,7 @@ import {
 } from "../../styles/pages/Dashboard"
 
 const Dashboard: NextPage = () => {
-  const [option, setOption] = useState<"projects" | "skills" | "messages" | undefined>()
+  const [option, setOption] = useState<"projects" | "skills" | "messages">("projects")
 
   const [projects, setProjects] = useState<ProjectI[]>()
   const [skills, setSkills] = useState<SkillI[]>()
@@ -21,7 +21,7 @@ const Dashboard: NextPage = () => {
 
   return (
     <Container>
-      <Sidebar />
+      <Sidebar setOption={setOption} />
 
       <Content>
         {function () {
