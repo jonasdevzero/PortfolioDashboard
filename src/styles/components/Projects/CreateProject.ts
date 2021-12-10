@@ -5,9 +5,9 @@ export const Container = styled.div`
     flex-direction: column;
     position: absolute;
     top: 0;
-    bottom: 0;
     left: 0;
     right: 0;
+    min-height: 100vh;
 
     background-color: #252525;
 `
@@ -38,8 +38,29 @@ export const Content = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
+`
 
-    margin-top: 2rem;
+export const Options = styled.div`
+    display: flex;
+    margin: 1rem 0;
+`
+
+export const Option = styled.span`
+    font-size: 1.4rem;
+    padding: .7rem 1rem;
+
+    background-color: #111;
+    border-radius: .3rem;
+    transition: opacity .3s ease;
+    cursor: pointer;
+
+    & + & {
+        margin-left: 1rem;
+    }
+
+    &:hover {
+        opacity: .7;;
+    }
 `
 
 export const Form = styled.form`
@@ -48,15 +69,18 @@ export const Form = styled.form`
     width: 80rem;
 
     padding: 2rem;
+    margin-bottom: 5rem;;
     border-radius: .5rem;
     background-color: #222;
 
-    div.row {
+    .row {
         display: flex;
         flex-direction: row;
-        width: 100%;
     }
-    div.column {
+    .row + .row {
+        margin-top: 1rem;
+    }
+    .column {
         display: flex;
         flex-direction: column;
     }
@@ -132,17 +156,74 @@ export const RowWrapper = styled.div`
 
     ${InputWrapper} + ${InputWrapper} {
         margin-top: 0;
-        margin-left: .7rem;
+        margin-left: 1rem;
+    }
+`
+
+export const ImagesContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+`
+
+export const AddImageFieldBtn = styled.button`
+    height: 4.5rem;
+
+    color: #fff;
+    font-size: 1.5rem;
+    background-color: #333;
+    border: none;
+    outline: none;
+    margin: 1rem 0;
+    cursor: pointer;
+`
+
+export const RemoveImageFieldBtn = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.5rem;
+    height: 4.5rem;
+
+    background-color: #333;
+    margin-left: 1rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    svg {
+        color: red;
+        font-size: 2.5rem;
     }
 `
 
 export const TextEditorContainer = styled.div`
+    margin-top: 2rem;
+    font-size: 100%;
+    color: #000;
 
+    div.rdw-editor-main {
+        color: #fff;
+    }
+    div.preview {
+        margin-top: 2rem;
+        color: #fff;
+    }
+
+    p {
+        font-size: 16px;
+    }
 `
 
-export const Submit = styled.button`
-    width: 100%;
-    height: 5rem;
+export const Error = styled.strong`
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 4.5rem;
 
-    background-color: #333;
+    font-size: 1.7rem;
+    background-color: red;
+    padding: 0 2rem;
 `

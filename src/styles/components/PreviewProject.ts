@@ -81,6 +81,10 @@ export const HtmlContainer = styled.div`
     * + * {
         margin-top: 1.5rem;
     }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin: 3.5rem 0 1rem 0;
+    }
 `
 
 export const Title = styled.h1`
