@@ -54,3 +54,14 @@ export function update(id: string, data: UpdateProjectI): Promise<void> {
         }
     })
 }
+
+export function deleteProject(id: string): Promise<void> {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await api.delete(`/project/${id}`)
+            resolve()
+        } catch (error: any) {
+            reject(error.response?.data.message)
+        }
+    })
+}

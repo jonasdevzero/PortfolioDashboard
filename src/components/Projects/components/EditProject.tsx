@@ -118,157 +118,154 @@ export default function EditProject({ projects, close }: EditProjectI) {
 		<Container>
 			{function () {
 				switch (previewOption) {
-					case "project":
-						return (
-							<PreviewProject
-								project={{ name, banner_url, description, repository_link, website_link, video_demo, html, images: images.map(i => i.url) }}
-								close={() => setPreviewOption(undefined)}
-							/>
-						)
-					case "card":
-						return (
-							<PreviewCard
-								project={{ name, description, repository_link, website_link, banner_url }}
-								close={() => setPreviewOption(undefined)}
-							/>
-						)
-					default:
-						return (
-							<>
-								<Sidebar>
-									<h3>Projetos</h3>
+					case "project": return (
+						<PreviewProject
+							project={{ name, banner_url, description, repository_link, website_link, video_demo, html, images: images.map(i => i.url) }}
+							close={() => setPreviewOption(undefined)}
+						/>
+					)
+					case "card": return (
+						<PreviewCard
+							project={{ name, description, repository_link, website_link, banner_url }}
+							close={() => setPreviewOption(undefined)}
+						/>
+					)
+					default: return (
+						<>
+							<Sidebar>
+								<h3>Projetos</h3>
 
-									<div className="projects">
-										{projects?.map(p => (
-											<span key={p.id} onClick={() => selectProject(p)}>{p.name}</span>
-										))}
-									</div>
-								</Sidebar>
+								<div className="projects">
+									{projects?.map(p => (
+										<span key={p.id} onClick={() => selectProject(p)}>{p.name}</span>
+									))}
+								</div>
+							</Sidebar>
 
-								<Inner>
-									<Header>
-										<h2>Editar projeto / {name}</h2>
+							<Inner>
+								<Header>
+									<h2>Editar projeto / {name}</h2>
 
-										<span onClick={() => close()}>
-											<FiX />
-										</span>
-									</Header>
+									<span onClick={() => close()}>
+										<FiX />
+									</span>
+								</Header>
 
-									{name ? (
-										<Content>
-											<Options>
-												<Option onClick={() => setPreviewOption("project")}>Preview Project</Option>
-												<Option onClick={() => setPreviewOption("card")}>Preview Card</Option>
-												<Option onClick={() => handleSubmit()}>Edit project</Option>
-											</Options>
+								{name ? (
+									<Content>
+										<Options>
+											<Option onClick={() => setPreviewOption("project")}>Preview Project</Option>
+											<Option onClick={() => setPreviewOption("card")}>Preview Card</Option>
+											<Option onClick={() => handleSubmit()}>Edit project</Option>
+										</Options>
 
-											<Form>
-												<div className="column">
-													<div className="row">
-														<div className="column">
-															<BannerPreview url={banner_url} />
+										<Form>
+											<div className="column">
+												<div className="row">
+													<div className="column">
+														<BannerPreview url={banner_url} />
 
-															<InputWrapper>
-																<Label htmlFor="banner_url">Banner Url: </Label>
-																<Input id="banner_url" name="banner_url" type="text" value={banner_url} onChange={e => setBannerUrl(e.target.value)} />
-															</InputWrapper>
-														</div>
-
-														<BasicData>
-															<InputWrapper>
-																<Label htmlFor="name">Name: </Label>
-																<Input id="name" name="name" type="text" value={name} onChange={e => setName(e.target.value)} />
-															</InputWrapper>
-
-															<InputWrapper>
-																<Label htmlFor="description">Description: </Label>
-																<Textarea id="description" name="description" value={description} onChange={e => setDescription(e.target.value)} />
-															</InputWrapper>
-
-															<RowWrapper>
-																<InputWrapper>
-																	<Label htmlFor="repository_link">Repository Link: </Label>
-																	<Input id="repository_link" name="repository_link" value={repository_link} onChange={e => setRepositoryLink(e.target.value)} />
-																</InputWrapper>
-
-																<InputWrapper>
-																	<Label htmlFor="website_link">Website Link: </Label>
-																	<Input id="website_link" name="website_link" value={website_link} onChange={e => setWebsiteLink(e.target.value)} />
-																</InputWrapper>
-															</RowWrapper>
-
-															<InputWrapper>
-																<Label htmlFor="video_demo">Video demo Url: </Label>
-																<Input id="video_demo" name="video_demo" type="text" value={video_demo} onChange={e => setVideoDemo(e.target.value)} />
-															</InputWrapper>
-														</BasicData>
+														<InputWrapper>
+															<Label htmlFor="banner_url">Banner Url: </Label>
+															<Input id="banner_url" name="banner_url" type="text" value={banner_url} onChange={e => setBannerUrl(e.target.value)} />
+														</InputWrapper>
 													</div>
 
-													<ImagesContainer>
-														{images.map((img, i) => (
-															<InputWrapper key={i}>
-																<Label>Image Url:</Label>
+													<BasicData>
+														<InputWrapper>
+															<Label htmlFor="name">Name: </Label>
+															<Input id="name" name="name" type="text" value={name} onChange={e => setName(e.target.value)} />
+														</InputWrapper>
 
-																<div className="row">
-																	<Input value={img.url} disabled />
+														<InputWrapper>
+															<Label htmlFor="description">Description: </Label>
+															<Textarea id="description" name="description" value={description} onChange={e => setDescription(e.target.value)} />
+														</InputWrapper>
 
-																	<RemoveImageFieldBtn type="button" onClick={() => {
-																		setImages(images.filter((_, index) => index !== i))
-																		setRemoveImages([ ...remove_images, img.id ])
-																	}}>
-																		<FiTrash2 />
-																	</RemoveImageFieldBtn>
-																</div>
-															</InputWrapper>
-														))}
-													</ImagesContainer>
-
-													<ImagesContainer>
-														<AddImageFieldBtn type="button" onClick={() => setNewImages([...new_images, ""])}>Add image field</AddImageFieldBtn>
-
-														{new_images.map((s, i, arr) => (
+														<RowWrapper>
 															<InputWrapper>
-																<Label htmlFor="images">Image Url: </Label>
-
-																<div className="row">
-																	<Input
-																		id="images"
-																		name="images"
-																		type="text"
-																		value={s}
-																		onChange={e => setNewImages(arr.map((element, index) => {
-																			if (index === i) return e.target.value;
-																			return element;
-																		}))}
-																	/>
-
-																	<RemoveImageFieldBtn type="button" onClick={() => setNewImages(new_images.filter((_, index) => index !== i))}>
-																		<FiTrash2 />
-																	</RemoveImageFieldBtn>
-																</div>
+																<Label htmlFor="repository_link">Repository Link: </Label>
+																<Input id="repository_link" name="repository_link" value={repository_link} onChange={e => setRepositoryLink(e.target.value)} />
 															</InputWrapper>
-														))}
-													</ImagesContainer>
+
+															<InputWrapper>
+																<Label htmlFor="website_link">Website Link: </Label>
+																<Input id="website_link" name="website_link" value={website_link} onChange={e => setWebsiteLink(e.target.value)} />
+															</InputWrapper>
+														</RowWrapper>
+
+														<InputWrapper>
+															<Label htmlFor="video_demo">Video demo Url: </Label>
+															<Input id="video_demo" name="video_demo" type="text" value={video_demo} onChange={e => setVideoDemo(e.target.value)} />
+														</InputWrapper>
+													</BasicData>
 												</div>
 
-												<TextEditorContainer>
-													<Editor
-														editorState={editorState}
-														toolbarClassName="toolbarClassName"
-														wrapperClassName="wrapperClassName"
-														editorClassName="editorClassName"
-														onEditorStateChange={onEditorStateChange}
-													/>
-												</TextEditorContainer>
-											</Form>
+												<ImagesContainer>
+													{images.map((img, i) => (
+														<InputWrapper key={i}>
+															<Label>Image Url:</Label>
 
-											{error ? (<Error>{error}</Error>) : null}
-										</Content>
-									) : null}
+															<div className="row">
+																<Input value={img.url} disabled />
 
-								</Inner>
-							</>
-						)
+																<RemoveImageFieldBtn type="button" onClick={() => {
+																	setImages(images.filter((_, index) => index !== i))
+																	setRemoveImages([...remove_images, img.id])
+																}}>
+																	<FiTrash2 />
+																</RemoveImageFieldBtn>
+															</div>
+														</InputWrapper>
+													))}
+												</ImagesContainer>
+
+												<ImagesContainer>
+													<AddImageFieldBtn type="button" onClick={() => setNewImages([...new_images, ""])}>Add image field</AddImageFieldBtn>
+
+													{new_images.map((s, i, arr) => (
+														<InputWrapper>
+															<Label htmlFor="images">Image Url: </Label>
+
+															<div className="row">
+																<Input
+																	id="images"
+																	name="images"
+																	type="text"
+																	value={s}
+																	onChange={e => setNewImages(arr.map((element, index) => {
+																		if (index === i) return e.target.value;
+																		return element;
+																	}))}
+																/>
+
+																<RemoveImageFieldBtn type="button" onClick={() => setNewImages(new_images.filter((_, index) => index !== i))}>
+																	<FiTrash2 />
+																</RemoveImageFieldBtn>
+															</div>
+														</InputWrapper>
+													))}
+												</ImagesContainer>
+											</div>
+
+											<TextEditorContainer>
+												<Editor
+													editorState={editorState}
+													toolbarClassName="toolbarClassName"
+													wrapperClassName="wrapperClassName"
+													editorClassName="editorClassName"
+													onEditorStateChange={onEditorStateChange}
+												/>
+											</TextEditorContainer>
+										</Form>
+
+										{error ? (<Error>{error}</Error>) : null}
+									</Content>
+								) : null}
+
+							</Inner>
+						</>
+					)
 				}
 			}()}
 		</Container>

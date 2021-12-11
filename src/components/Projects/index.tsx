@@ -85,7 +85,7 @@ export default function Projects({ projects, setProjects }: ProjectsI) {
                     case "update":
                         return <EditProject projects={projects} close={close} />
                     case "delete":
-                        return <DeleteProject close={close} />
+                        return <DeleteProject projects={projects} close={close} />
                 }
             }()}
         </Container>
