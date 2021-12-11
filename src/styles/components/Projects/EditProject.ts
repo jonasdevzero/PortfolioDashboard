@@ -30,7 +30,7 @@ export const Sidebar = styled.aside`
         padding: 0 2rem;
     }
 
-    div.projects {
+    div.projects, div.skills {
         display: flex;
         flex-direction: column;
 

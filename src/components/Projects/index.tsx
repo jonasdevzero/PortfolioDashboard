@@ -28,7 +28,7 @@ interface ProjectsI {
     setProjects: React.Dispatch<React.SetStateAction<ProjectI[]>>
 }
 export default function Projects({ projects, setProjects }: ProjectsI) {
-    const [option, setOption] = useState<"create" | "update" | "delete" | undefined>()
+    const [option, setOption] = useState<"create" | "update" | "delete">()
     const close = () => setOption(undefined)
 
     useEffect(() => {
