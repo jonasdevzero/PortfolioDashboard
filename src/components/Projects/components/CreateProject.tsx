@@ -120,7 +120,7 @@ export default function CreateProject({ close }: CreateProjectI) {
 									<Options>
 										<Option onClick={() => setPreviewOption("project")}>Preview Project</Option>
 										<Option onClick={() => setPreviewOption("card")}>Preview Card</Option>
-										<Option onClick={() => handleSubmit()}>Criar projeto</Option>
+										<Option onClick={() => handleSubmit()}>create project</Option>
 									</Options>
 
 									<Form>
@@ -206,7 +206,7 @@ export default function CreateProject({ close }: CreateProjectI) {
 										</TextEditorContainer>
 									</Form>
 
-									{error? (<Error>{error}</Error>) : null}
+									{error ? (<Error>{error}</Error>) : null}
 								</Content>
 							</>
 						)

@@ -15,7 +15,7 @@ import {
 const Dashboard: NextPage = () => {
   const [option, setOption] = useState<"projects" | "skills" | "messages">("projects")
 
-  const [projects, setProjects] = useState<ProjectI[]>()
+  const [projects, setProjects] = useState<ProjectI[]>([] as ProjectI[])
   const [skills, setSkills] = useState<SkillI[]>()
   const [messages, setMessages] = useState<MessageI[]>()
 

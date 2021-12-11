@@ -32,3 +32,25 @@ export async function create(data: CreateProjectI): Promise<void> {
         }
     })
 }
+
+interface UpdateProjectI {
+    name: string
+    banner_url: string
+    description: string
+    html: string
+    repository_link: string
+    website_link: string
+    video_demo: string
+    remove_images: Array<{ id: string }>
+    new_images: Array<{ url: string }>
+}
+export function update(id: string, data: UpdateProjectI): Promise<void> {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await api.put(`/project/${id}`, data)
+            resolve()
+        } catch (error: any) {
+            reject(error.response?.data.message)
+        }
+    })
+}

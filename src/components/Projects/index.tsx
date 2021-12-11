@@ -24,15 +24,15 @@ import {
 } from "react-icons/fi"
 
 interface ProjectsI {
-    projects: ProjectI[] | undefined
-    setProjects: React.Dispatch<React.SetStateAction<ProjectI[] | undefined>>
+    projects: ProjectI[]
+    setProjects: React.Dispatch<React.SetStateAction<ProjectI[]>>
 }
 export default function Projects({ projects, setProjects }: ProjectsI) {
     const [option, setOption] = useState<"create" | "update" | "delete" | undefined>()
     const close = () => setOption(undefined)
 
     useEffect(() => {
-        !projects ? projectsServices.getAll().then(p => setProjects(p)) : null
+        !projects.length ? projectsServices.getAll().then(p => setProjects(p)) : null
     }, [])
 
 
@@ -83,7 +83,7 @@ export default function Projects({ projects, setProjects }: ProjectsI) {
                     case "create":
                         return <CreateProject close={close} />
                     case "update":
-                        return <EditProject close={close} />
+                        return <EditProject projects={projects} close={close} />
                     case "delete":
                         return <DeleteProject close={close} />
                 }
