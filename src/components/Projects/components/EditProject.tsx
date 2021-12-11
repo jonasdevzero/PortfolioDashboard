@@ -29,10 +29,13 @@ import {
 	Textarea,
 	RowWrapper,
 	ImagesContainer,
-	TextEditorContainer,	
+	AddImageFieldBtn,
+	RemoveImageFieldBtn,
+	TextEditorContainer,
 } from "../../../styles/components/Projects/CreateProject"
 import {
 	FiX,
+	FiTrash2,
 } from "react-icons/fi"
 
 type HtmlToDraft = (text: string, customChunkRenderer?: ((nodeName: string, node: HTMLElement) => RawDraftEntity | undefined) | undefined) => {
@@ -54,13 +57,15 @@ export default function EditProject({ projects, close }: EditProjectI) {
 
 	const [id, setId] = useState("")
 	const [name, setName] = useState("")
-	const [images, setImages] = useState<Array<{ url: string }>>([])
+	const [images, setImages] = useState<Array<{ id: string, url: string }>>([])
 	const [banner_url, setBannerUrl] = useState("")
 	const [description, setDescription] = useState("")
 	const [repository_link, setRepositoryLink] = useState("")
 	const [website_link, setWebsiteLink] = useState("")
 	const [video_demo, setVideoDemo] = useState("")
 	const [html, setHtml] = useState("")
+	const [new_images, setNewImages] = useState<string[]>([])
+	const [remove_images, setRemoveImages] = useState<string[]>([])
 
 	const [error, setError] = useState<string>()
 	const [loading, setLoading] = useState(false)
@@ -101,8 +106,8 @@ export default function EditProject({ projects, close }: EditProjectI) {
 			website_link,
 			html,
 			video_demo,
-			remove_images: [],
-			new_images: []
+			remove_images: remove_images.map(img => ({ id: img })),
+			new_images: new_images.map(img => ({ url: img })),
 		})
 			.then(() => Router.reload())
 			.catch(error => setError(error))
@@ -200,7 +205,49 @@ export default function EditProject({ projects, close }: EditProjectI) {
 													</div>
 
 													<ImagesContainer>
+														{images.map((img, i) => (
+															<InputWrapper key={i}>
+																<Label>Image Url:</Label>
 
+																<div className="row">
+																	<Input value={img.url} disabled />
+
+																	<RemoveImageFieldBtn type="button" onClick={() => {
+																		setImages(images.filter((_, index) => index !== i))
+																		setRemoveImages([ ...remove_images, img.id ])
+																	}}>
+																		<FiTrash2 />
+																	</RemoveImageFieldBtn>
+																</div>
+															</InputWrapper>
+														))}
+													</ImagesContainer>
+
+													<ImagesContainer>
+														<AddImageFieldBtn type="button" onClick={() => setNewImages([...new_images, ""])}>Add image field</AddImageFieldBtn>
+
+														{new_images.map((s, i, arr) => (
+															<InputWrapper>
+																<Label htmlFor="images">Image Url: </Label>
+
+																<div className="row">
+																	<Input
+																		id="images"
+																		name="images"
+																		type="text"
+																		value={s}
+																		onChange={e => setNewImages(arr.map((element, index) => {
+																			if (index === i) return e.target.value;
+																			return element;
+																		}))}
+																	/>
+
+																	<RemoveImageFieldBtn type="button" onClick={() => setNewImages(new_images.filter((_, index) => index !== i))}>
+																		<FiTrash2 />
+																	</RemoveImageFieldBtn>
+																</div>
+															</InputWrapper>
+														))}
 													</ImagesContainer>
 												</div>
 
