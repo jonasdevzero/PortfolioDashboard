@@ -33,5 +33,5 @@ export interface MessageI {
     email: string
     text: string
     sent_at: string
-    viewed: string
+    viewed: boolean
 }

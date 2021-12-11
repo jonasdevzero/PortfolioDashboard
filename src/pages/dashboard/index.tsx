@@ -17,7 +17,7 @@ const Dashboard: NextPage = () => {
 
   const [projects, setProjects] = useState<ProjectI[]>([] as ProjectI[])
   const [skills, setSkills] = useState<SkillI[]>([] as SkillI[])
-  const [messages, setMessages] = useState<MessageI[]>()
+  const [messages, setMessages] = useState<MessageI[]>([] as MessageI[])
 
   return (
     <Container>
@@ -31,7 +31,7 @@ const Dashboard: NextPage = () => {
             case "skills":
               return (<Skills skills={skills} setSkills={setSkills}  />)
             case "messages":
-              return (<Messages />)
+              return (<Messages messages={messages} setMessages={setMessages} />)
           }
         }()}
 
