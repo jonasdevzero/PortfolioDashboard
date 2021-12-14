@@ -20,7 +20,7 @@ export default function Messages({ messages, setMessages }: MessagesI) {
 
     useEffect(() => {
         !messages.length ? messageService.getAll().then(m => setMessages(m)) : null
-    }, [])
+    }, [messages.length, setMessages])
 
     function toggleView(id: string) {
         messageService.toggleView(id).then(() => {

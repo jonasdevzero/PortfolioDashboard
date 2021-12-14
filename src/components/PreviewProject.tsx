@@ -1,4 +1,5 @@
 import parse from 'html-react-parser'
+import NextImage from "next/image"
 
 import Slider from './Slider'
 import {
@@ -36,9 +37,7 @@ export default function PreviewProject({ project, close }: PreviewProjectI) {
 
             <SlideContainer>
                 <Slider>
-                    {project.images.map((img, i) => {
-                        return img ? (<img key={i} src={img} />) : null
-                    })}
+                    {project.images.map((img, i) => img ? (<NextImage key={i} src={img} alt="" />) : null)}
                 </Slider>
             </SlideContainer>
 

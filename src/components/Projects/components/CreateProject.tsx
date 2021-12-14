@@ -171,7 +171,7 @@ export default function CreateProject({ close }: CreateProjectI) {
 												</AddImageFieldBtn>
 
 												{images.map((s, i, arr) => (
-													<InputWrapper>
+													<InputWrapper key={i}>
 														<Label htmlFor="images">Image Url: </Label>
 
 														<div className="row">

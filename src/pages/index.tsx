@@ -65,7 +65,7 @@ const Home: NextPage = () => {
 
         <Submit type="submit">Submit</Submit>
 
-        <Link href="/signup">
+        <Link href="/signup" passHref>
           <StyledLink>SignUp</StyledLink>
         </Link>
       </Form>

@@ -105,7 +105,7 @@ export default function Slider({ children, time }: ISlider) {
         }, time ? time : 5000)
 
         return () => clearInterval(timer)
-    }, [currentSlide, stopTimer])
+    }, [currentSlide, stopTimer, switchSlide, time])
 
     return (
         <Container

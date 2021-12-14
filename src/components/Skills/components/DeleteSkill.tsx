@@ -57,7 +57,7 @@ export default function DeleteSkill({ skills, close }: DeleteSkillI) {
                 <Content>
                     {skill.name ? (
                         <DeleteContainer>
-                            <h2>Deseja realmente deletar "{skill.name}"?</h2>
+                            <h2>Deseja realmente deletar `{skill.name}`?</h2>
                             <button type="button" onClick={() => handleDelete()}>Deletar</button>
                         </DeleteContainer>
                     ) : null}

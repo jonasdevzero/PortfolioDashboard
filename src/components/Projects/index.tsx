@@ -33,7 +33,7 @@ export default function Projects({ projects, setProjects }: ProjectsI) {
 
     useEffect(() => {
         !projects.length ? projectsServices.getAll().then(p => setProjects(p)) : null
-    }, [])
+    }, [projects.length, setProjects])
 
 
     return (

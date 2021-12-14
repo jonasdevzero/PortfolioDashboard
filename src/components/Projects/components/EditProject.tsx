@@ -224,7 +224,7 @@ export default function EditProject({ projects, close }: EditProjectI) {
 													<AddImageFieldBtn type="button" onClick={() => setNewImages([...new_images, ""])}>Add image field</AddImageFieldBtn>
 
 													{new_images.map((s, i, arr) => (
-														<InputWrapper>
+														<InputWrapper key={i}>
 															<Label htmlFor="images">Image Url: </Label>
 
 															<div className="row">

@@ -9,7 +9,7 @@ export const SkillsContainer = styled.div`
 
 export const SkillContainer = styled.div`
     display: flex;
-    width: 35rem;
+    width: 32rem;
     height: 15rem;
     background-color: #222;
     margin: 1rem;

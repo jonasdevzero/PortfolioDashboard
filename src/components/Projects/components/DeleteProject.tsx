@@ -56,7 +56,7 @@ export default function DeleteProject({ projects, close }: DeleteProjectI) {
                 <Content>
                     {project.name ? (
                         <DeleteContainer>
-                            <h2>Deseja realmente deletar "{project.name}"?</h2>
+                            <h2>Deseja realmente deletar `{project.name}`?</h2>
                             <button type="button" onClick={() => handleDelete()}>Deletar</button>
                         </DeleteContainer>
                     ) : null}

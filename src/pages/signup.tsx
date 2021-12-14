@@ -86,7 +86,7 @@ const SignUp: NextPage = () => {
 
         <Submit type="submit">Submit</Submit>
 
-        <Link href="/">
+        <Link href="/" passHref>
           <StyledLink>
             SignIn
           </StyledLink>

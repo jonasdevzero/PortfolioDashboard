@@ -35,7 +35,7 @@ export default function Skills({ skills, setSkills }: SkillsI) {
             skillService.getAll()
                 .then(s => setSkills(s))
             : null
-    }, [])
+    }, [skills.length, setSkills])
 
     return (
         <Container>
