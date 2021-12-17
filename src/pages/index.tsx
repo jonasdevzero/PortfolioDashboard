@@ -60,7 +60,7 @@ const Home: NextPage = () => {
 
         <CheckBoxWrapper>
           <CheckBox id="connected" name="connected" type="checkbox" checked={keepConnected} onChange={() => setKeepConnected(!keepConnected)} />
-          <CheckBoxLabel>Keep connected</CheckBoxLabel>
+          <CheckBoxLabel htmlFor="connected">Keep connected</CheckBoxLabel>
         </CheckBoxWrapper>
 
         <Submit type="submit">Submit</Submit>

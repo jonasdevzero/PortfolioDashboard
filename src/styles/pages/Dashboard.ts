@@ -6,6 +6,18 @@ export const Container = styled.div`
 `
 
 export const Content = styled.div`
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+
     margin-left: 21rem;
+
+    h1 {
+        font-size: 4.5rem;
+        color: #555;
+
+    }
 `

@@ -1,3 +1,5 @@
+import Router from "next/router"
+import { constant } from "../constant"
 
 import {
     Container,
@@ -7,11 +9,7 @@ import {
     Option,
 } from "../styles/components/Sidebar"
 
-interface SidebarI {
-    setOption: React.Dispatch<React.SetStateAction<"projects" | "skills" | "messages">>
-}
-export default function Sidebar({ setOption }: SidebarI) {
-
+export default function Sidebar() {
     return (
         <Container>
             <Title>Dev[0]</Title>
@@ -19,9 +17,9 @@ export default function Sidebar({ setOption }: SidebarI) {
             <Row />
 
             <Options>
-                <Option onClick={() => setOption("projects")}>Projects</Option>
-                <Option onClick={() => setOption("skills")}>Skills</Option>
-                <Option onClick={() => setOption("messages")}>Messages</Option>
+                <Option onClick={() => Router.push(constant.routes.DASHBOARD.PROJECTS.HOME)}>Projects</Option>
+                <Option onClick={() => Router.push(constant.routes.DASHBOARD.SKILLS.HOME)}>Skills</Option>
+                <Option onClick={() => Router.push(constant.routes.DASHBOARD.MESSAGES)}>Messages</Option>
             </Options>
         </Container>
     )
