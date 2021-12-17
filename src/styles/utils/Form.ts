@@ -27,7 +27,7 @@ export const Label = styled.label`
 `
 
 export const Input = styled.input`
-    width: 25rem;
+    width: 30rem;
     height: 4.5rem;
 
     font-size: 1.6rem;
@@ -61,7 +61,7 @@ export const CheckBoxWrapper = styled.div`
 `
 
 export const Submit = styled.button`
-    width: 25rem;
+    width: 30rem;
     height: 4.5rem;
 
     font-size: 1.7rem;
