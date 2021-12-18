@@ -16,4 +16,11 @@ export const constant = {
       MESSAGES: "/dashboard/messages",
     },
   },
+
+  actions: {
+    SET_PROJECTS: "SET_PROJECTS",
+    SET_SKILLS: "SET_SKILLS",
+    ADD_PROJECT: "ADD_PROJECT",
+    ADD_SKILL: "ADD_SKILL",
+  },
 };

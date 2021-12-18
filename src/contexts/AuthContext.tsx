@@ -28,7 +28,7 @@ export function AuthProvider({ children }: { children: React.ReactChild }) {
 
     return (
         <AuthContext.Provider value={{ isAuthenticated, admin }}>
-            {isAuthenticated ? children : null}
+            {isAuthenticated ? children : !router.asPath.startsWith("/dashboard") ? children: null}
         </AuthContext.Provider>
     )
 }

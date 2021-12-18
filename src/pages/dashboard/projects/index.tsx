@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react"
 import type { NextPage } from "next"
 import Link from "next/link"
-import * as projectService from "../../../services/projects"
 import { constant } from "../../../constant"
+import { useSelector } from "../../../hooks/useData"
 import { ProjectI } from "../../../types/data"
 
 import Header from "../../../components/Header"
@@ -13,7 +12,7 @@ import {
     Content,
     OptionsBar,
     Option,
-} from "../../../styles/pages/dashboard/projects"
+} from "../../../styles/pages/dashboard/Projects"
 import {
     FiPlus,
     FiEdit2,
@@ -21,11 +20,7 @@ import {
 } from "react-icons/fi"
 
 const Projects: NextPage = () => {
-    const [projects, setProjects] = useState<ProjectI[]>()
-
-    useEffect(() => {
-        projectService.getAll().then(p => setProjects(p))
-    }, [])
+    const projects: ProjectI[] = useSelector(state => state.projects)
 
     return (
         <Container>

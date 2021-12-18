@@ -2,6 +2,7 @@ import { createContext, useReducer, useEffect } from "react"
 import { MessageI, ProjectI, SkillI } from "../types/data"
 import * as projectService from "../services/projects"
 import * as skillsService from "../services/skills"
+import { constant } from "../constant"
 
 export interface DataStateI {
     projects: ProjectI[],
@@ -13,10 +14,12 @@ const initialState = {} as DataStateI
 
 function dataReducer(state: DataStateI, action: any): DataStateI {
     switch (action.type) {
-        case "SET_PROJECTS": 
+        case constant.actions.SET_PROJECTS: 
             return { ...state, projects: action.projects }
-        case "SET_SKILLS":
+        case constant.actions.SET_SKILLS:
             return { ...state, skills: action.skills }
+        case constant.actions.ADD_PROJECT:
+            return { ...state, projects: [action.project, ...state.projects] }
         default:
             return state
     }
@@ -28,8 +31,8 @@ export function DataProvider({ children }: { children: React.ReactChild }) {
     const [state, dispatch] = useReducer(dataReducer, initialState)
 
     useEffect(() => {
-        !state.projects ? projectService.getAll().then(p => dispatch({ type: "SET_PROJECTS", projects: p })) : null
-        !state.skills ? skillsService.getAll().then(s => dispatch({ type: "SET_SKILLS", skills: s })) : null
+        !state.projects ? projectService.getAll().then(p => dispatch({ type: constant.actions.SET_PROJECTS, projects: p })) : null
+        !state.skills ? skillsService.getAll().then(s => dispatch({ type: constant.actions.SET_SKILLS, skills: s })) : null
     }, [])
 
     return (
