@@ -1,7 +1,7 @@
 import type { NextPage } from "next"
 import { authPage } from "../../hooks/useAuth"
 
-import Sidebar from "../../components/Sidebar"
+import Header from "../../components/Header"
 import {
   Container,
   Content,
@@ -10,7 +10,7 @@ import {
 const Dashboard: NextPage = () => {
   return (
     <Container>
-      <Sidebar />
+      <Header />
 
       <Content>
         <h1>Dev[0]</h1>
