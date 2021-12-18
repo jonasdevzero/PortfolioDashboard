@@ -22,11 +22,11 @@ interface CreateProjectI {
     video_demo: string
     images: Array<{ url: string }>
 }
-export async function create(data: CreateProjectI): Promise<void> {
+export async function create(data: CreateProjectI): Promise<ProjectI> {
     return new Promise(async (resolve, reject) => {
         try {
-            await api.post("/project", data)
-            resolve()
+            const response = await api.post("/project", data)
+            resolve(response.data.project)
         } catch (error: any) {
             reject(error.response?.data.message)
         }

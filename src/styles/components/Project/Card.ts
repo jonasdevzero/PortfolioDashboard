@@ -19,10 +19,6 @@ export const Container = styled.div`
     min-height: 50rem;
     height: 100%;
   }
-
-  & + & {
-    margin-top: 3rem;
-  }
 `;
 
 export const Banner = styled.div<{ url: string }>`
