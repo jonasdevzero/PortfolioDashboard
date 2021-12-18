@@ -12,7 +12,7 @@ export const AuthContext = createContext({} as AuthContextI)
 
 export function AuthProvider({ children }: { children: React.ReactChild }) {
     const [admin, setAdmin] = useState<AdminI>({} as AdminI)
-    const isAuthenticated = !!admin.id
+    const isAuthenticated = !!admin.id    
 
     const router = useRouter()
 
@@ -28,7 +28,7 @@ export function AuthProvider({ children }: { children: React.ReactChild }) {
 
     return (
         <AuthContext.Provider value={{ isAuthenticated, admin }}>
-            {children}
+            {isAuthenticated ? children : null}
         </AuthContext.Provider>
     )
 }
