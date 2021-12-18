@@ -14,8 +14,6 @@ import Header from "../../../components/Header"
 import {
 	Container,
 	Content,
-} from "../../../styles/pages/dashboard/Projects/Create"
-import {
 	Options,
 	Option,
 	Form,
