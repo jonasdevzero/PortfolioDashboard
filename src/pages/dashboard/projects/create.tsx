@@ -14,6 +14,8 @@ import Header from "../../../components/Header"
 import {
 	Container,
 	Content,
+} from "../../../styles/pages/dashboard/Projects/Create"
+import {
 	Options,
 	Option,
 	Form,
@@ -29,7 +31,7 @@ import {
 	TextEditorContainer,
 	Textarea,
 	Error,
-} from "../../../styles/pages/dashboard/Projects/Create"
+} from "../../../styles/utils/ProjectForm"
 import { FiTrash2 } from "react-icons/fi"
 
 const Editor = dynamic<EditorProps>(
