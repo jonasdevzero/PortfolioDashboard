@@ -8,8 +8,6 @@ interface AuthContextI {
     admin: AdminI
 }
 
-const authRoutes = ["/", "/dashboard"]
-
 export const AuthContext = createContext({} as AuthContextI)
 
 export function AuthProvider({ children }: { children: React.ReactChild }) {
@@ -19,14 +17,13 @@ export function AuthProvider({ children }: { children: React.ReactChild }) {
     const router = useRouter()
 
     useEffect(() => {
-        authRoutes.includes(router.asPath) && adminService.hasJWT() && !isAuthenticated ?
+        router.asPath.startsWith("/dashboard") && !isAuthenticated ?
             adminService.auth()
-                .then(adm => {
-                    setAdmin(adm)
-                    router.replace("/dashboard")
-                })
+                .then(adm => setAdmin(adm))
                 .catch(error => router.replace(`/?error=${error}`))
             : null
+
+        router.asPath === "/" && adminService.hasJWT() ? router.replace("/dashboard") : null
     }, [router, isAuthenticated])
 
     return (
