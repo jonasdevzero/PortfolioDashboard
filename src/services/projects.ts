@@ -44,11 +44,11 @@ interface UpdateProjectI {
     remove_images: Array<{ id: string }>
     new_images: Array<{ url: string }>
 }
-export function update(id: string, data: UpdateProjectI): Promise<void> {
+export function update(id: string, data: UpdateProjectI): Promise<ProjectI> {
     return new Promise(async (resolve, reject) => {
         try {
-            await api.put(`/project/${id}`, data)
-            resolve()
+            const response = await api.put(`/project/${id}`, data)
+            resolve(response.data.project)
         } catch (error: any) {
             reject(error.response?.data.message)
         }
