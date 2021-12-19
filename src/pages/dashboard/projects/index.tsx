@@ -12,7 +12,7 @@ import {
     Content,
     OptionsBar,
     Option,
-} from "../../../styles/pages/dashboard/projects"
+} from "../../../styles/pages/Projects"
 import {
     FiPlus,
     FiEdit2,

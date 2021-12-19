@@ -15,7 +15,7 @@ import {
     Skill,
     SkillBanner,
     SkillContent,
-} from "../../../styles/pages/dashboard/skills"
+} from "../../../styles/pages/Skills"
 import {
     FiPlus,
     FiEdit2,

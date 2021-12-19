@@ -7,7 +7,7 @@ import { MessageI } from "../../types/data"
 import {
     Container,
     Message,
-} from "../../styles/pages/dashboard/Messages"
+} from "../../styles/pages/Messages"
 import {
     FiEye,
     FiEyeOff,
