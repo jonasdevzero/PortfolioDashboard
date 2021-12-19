@@ -18,6 +18,8 @@ export function dataReducer(state: DataStateI, action: any): DataStateI {
                     
                 return p
             }) }
+        case constant.actions.ADD_SKILL:
+            return { ...state, skills: [action.skill, ...state.skills] }
         default:
             return state
     }

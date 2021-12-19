@@ -19,22 +19,22 @@ interface DataI {
     icon_url: string
     more_link: string
 }
-export function create(data: DataI): Promise<void> {
+export function create(data: DataI): Promise<SkillI> {
     return new Promise(async (resolve, reject) => {
         try {
-            await api.post("/skill", data)
-            resolve()
+            const response = await api.post("/skill", data)
+            resolve(response.data.skill)
         } catch (error: any) {
             reject(error.response?.data.message)
         }
     })
 }
 
-export function update(id: string, data: DataI): Promise<void> {
+export function update(id: string, data: DataI): Promise<SkillI> {
     return new Promise(async (resolve, reject) => {
         try {
-            await api.put(`/skill/${id}`, data)
-            resolve()
+            const response = await api.put(`/skill/${id}`, data)
+            resolve(response.data.skill)
         } catch (error: any) {
             reject(error.response?.data.message)
         }
