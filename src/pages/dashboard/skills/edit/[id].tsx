@@ -25,8 +25,7 @@ import { constant } from "../../../../constant"
 
 const EditSkill: NextPage = () => {
     const skills: SkillI[] = useSelector(state => state.skills)
-    console.log("skills", skills)
-
+    
     const [name, setName] = useState("")
     const [icon_url, setIconUrl] = useState("")
     const [description, setDescription] = useState("")
