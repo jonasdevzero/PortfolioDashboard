@@ -24,5 +24,6 @@ export const constant = {
     REMOVE_PROJECT: "REMOVE_PROJECT",
     UPDATE_PROJECT: "UPDATE_PROJECT",
     ADD_SKILL: "ADD_SKILL",
+    REMOVE_SKILL: "REMOVE_SKILL",
   },
 };

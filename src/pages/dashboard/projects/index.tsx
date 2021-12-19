@@ -82,7 +82,7 @@ const Projects: NextPage = () => {
                             </header>
 
                             {projects?.map(p => (
-                                <ProjectOption onClick={() => onClickProjectOption(p)}>
+                                <ProjectOption key={p.id} onClick={() => onClickProjectOption(p)}>
                                     <img src={p.banner_url} alt="" />
                                     <h4>{p.name}</h4>
                                 </ProjectOption>

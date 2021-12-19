@@ -20,6 +20,8 @@ export function dataReducer(state: DataStateI, action: any): DataStateI {
             }) }
         case constant.actions.ADD_SKILL:
             return { ...state, skills: [action.skill, ...state.skills] }
+        case constant.actions.REMOVE_SKILL:
+            return { ...state, skills: state.skills.filter(s => s.id !== action.whereId) }
         default:
             return state
     }

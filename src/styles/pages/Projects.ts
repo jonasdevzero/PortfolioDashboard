@@ -80,13 +80,14 @@ export const ProjectOptions = styled.div`
     overflow-y: scroll;
 
     background-color: #191818;
+    border: solid .2rem #222;
 
     header {
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 0 1.5rem;
-        height: 5rem;
+        min-height: 5rem;
         background-color: #121212;
 
         h3 {
@@ -104,7 +105,7 @@ export const ProjectOption = styled.div`
     align-items: center;
     margin: .5rem 2rem;
     padding: 1rem 0;
-    border-bottom: solid .1rem #bbb;
+    border-bottom: solid .1rem #252525;
 
     transition: opacity .2s ease;
     cursor: pointer;

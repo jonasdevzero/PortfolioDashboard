@@ -91,3 +91,113 @@ export const SkillContent = styled.div`
     font-size: 1.5rem;
   }
 `;
+
+export const Overlay = styled.div`
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .3);
+`
+
+export const SkillOptions = styled.div`
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    width: 40rem;
+    height: 40rem;
+    overflow-y: scroll;
+
+    background-color: #191818;
+    border: solid .2rem #252525;
+
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1.5rem;
+        min-height: 5rem;
+        background-color: #121212;
+
+        h3 {
+            font-size: 1.8rem;
+        }
+        svg {
+            font-size: 2.2rem;
+            cursor: pointer;
+        }
+    }
+`
+
+export const SkillOption = styled.div`
+    display: flex;
+    align-items: center;
+    margin: .5rem 2rem;
+    padding: 1rem 0;
+    border-bottom: solid .1rem #bbb;
+
+    transition: opacity .2s ease;
+    cursor: pointer;
+
+    :hover {
+        opacity: .5;
+    }
+    img {
+        width: 5rem;
+        height: 5rem;
+        object-fit: cover;
+    }
+    h4 {
+        font-size: 1.8rem;
+        margin-left: 1rem;
+    }
+`
+
+export const DeleteWindow = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    width: 40rem;
+    height: 20rem;
+    padding: 1rem;
+    border: solid .2rem #222;
+
+    background-color: #191818;
+
+    strong {
+        font-size: 2rem;
+    }
+    div.row {
+        display: flex;
+        margin-top: 2rem;
+
+        button {
+            width: 9rem;
+            height: 3rem;
+            background-color: #000;
+
+            border: none;
+            outline: none;
+            color: #fff;
+            cursor: pointer;
+        }
+        button.confirm  {
+            background-color: #dc3545;
+        }
+        button.cancel {
+            background-color: #28a745;
+        }
+        button + button {
+            margin-left: 1rem;
+        }
+    }
+`
