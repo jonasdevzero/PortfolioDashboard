@@ -18,10 +18,6 @@ import {
     Label,
     Input,
     RowWrapper,
-    ImagesContainer,
-    AddImageFieldBtn,
-    RemoveImageFieldBtn,
-    TextEditorContainer,
     Textarea,
     Error,
 } from "../../../../styles/utils/ProjectForm"
@@ -29,6 +25,7 @@ import { constant } from "../../../../constant"
 
 const EditSkill: NextPage = () => {
     const skills: SkillI[] = useSelector(state => state.skills)
+    console.log("skills", skills)
 
     const [name, setName] = useState("")
     const [icon_url, setIconUrl] = useState("")
@@ -44,7 +41,7 @@ const EditSkill: NextPage = () => {
 
     useEffect(() => {
         if (skills && router.query.id) {
-            const s = skills.find(s => s.id === router.query.id)
+            const s = skills.find(s => s?.id === router.query.id)
 
             if (s) {
                 setName(s.name)
@@ -85,7 +82,7 @@ const EditSkill: NextPage = () => {
             <Content>
                 <Options>
                     <Option className="create" onClick={() => handleEdit()}>Edit skill</Option>
-                    <Option className="cancel" onClick={() => close()}>Cancel</Option>
+                    <Option className="cancel" onClick={() => router.push(constant.routes.DASHBOARD.SKILLS.HOME)}>Cancel</Option>
                 </Options>
 
                 <Form>
