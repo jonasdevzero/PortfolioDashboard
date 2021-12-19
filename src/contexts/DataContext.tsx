@@ -3,6 +3,7 @@ import { MessageI, ProjectI, SkillI } from "../types/data"
 import * as projectService from "../services/projects"
 import * as skillsService from "../services/skills"
 import { constant } from "../constant"
+import { dataReducer } from "./dataReducer"
 
 export interface DataStateI {
     projects: ProjectI[],
@@ -11,19 +12,6 @@ export interface DataStateI {
 }
 
 const initialState = {} as DataStateI
-
-function dataReducer(state: DataStateI, action: any): DataStateI {
-    switch (action.type) {
-        case constant.actions.SET_PROJECTS: 
-            return { ...state, projects: action.projects }
-        case constant.actions.SET_SKILLS:
-            return { ...state, skills: action.skills }
-        case constant.actions.ADD_PROJECT:
-            return { ...state, projects: [action.project, ...state.projects] }
-        default:
-            return state
-    }
-}
 
 export const DataContext = createContext({} as { state: DataStateI, dispatch: React.Dispatch<any> })
 
