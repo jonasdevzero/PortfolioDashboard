@@ -1,27 +1,36 @@
 import { constant } from "../constant"
 import { DataStateI } from "./DataContext"
 
+const { actions } = constant
+
 export function dataReducer(state: DataStateI, action: any): DataStateI {
     switch (action.type) {
-        case constant.actions.SET_PROJECTS: 
+        case actions.SET_PROJECTS: 
             return { ...state, projects: action.projects }
-        case constant.actions.SET_SKILLS:
+        case actions.SET_SKILLS:
             return { ...state, skills: action.skills }
-        case constant.actions.ADD_PROJECT:
+        case actions.ADD_PROJECT:
             return { ...state, projects: [action.project, ...state.projects] }
-        case constant.actions.REMOVE_PROJECT:
+        case actions.REMOVE_PROJECT:
             return { ...state, projects: state.projects.filter(p => p.id !== action.whereId) }
-        case constant.actions.UPDATE_PROJECT:
+        case actions.UPDATE_PROJECT:
             return { ...state, projects: state.projects.map(p => {
                 if (p.id === action.whereId) 
                     return action.data.project;
                     
                 return p
             }) }
-        case constant.actions.ADD_SKILL:
+        case actions.ADD_SKILL:
             return { ...state, skills: [action.skill, ...state.skills] }
-        case constant.actions.REMOVE_SKILL:
+        case actions.REMOVE_SKILL:
             return { ...state, skills: state.skills.filter(s => s.id !== action.whereId) }
+        case actions.UPDATE_SKILL:
+            return { ...state, skills: state.skills.map(s => {
+                if (s.id === action.whereId)
+                    return action.data.skill;
+
+                return s
+            }) }
         default:
             return state
     }

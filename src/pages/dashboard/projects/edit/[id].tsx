@@ -6,6 +6,7 @@ import { EditorState, convertToRaw, ContentState, ContentBlock, RawDraftEntity }
 import { EditorProps } from "react-draft-wysiwyg"
 import draftToHtml from 'draftjs-to-html'
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css"
+import { useDispatch, useSelector } from "../../../../hooks/useData"
 import * as projectService from "../../../../services/projects"
 import { ProjectI } from "../../../../types/data"
 import { constant } from "../../../../constant"
@@ -31,7 +32,6 @@ import {
     Error,
 } from "../../../../styles/utils/ProjectForm"
 import { FiTrash2 } from "react-icons/fi"
-import { useDispatch, useSelector } from "../../../../hooks/useData"
 
 type HtmlToDraft = (text: string, customChunkRenderer?: ((nodeName: string, node: HTMLElement) => RawDraftEntity | undefined) | undefined) => {
     contentBlocks: ContentBlock[];
